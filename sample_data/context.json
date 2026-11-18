@@ -6,7 +6,8 @@
     "consumption",
     "refund",
     "reconcile",
-    "archive"
+    "archive",
+    "migration"
   ],
   "as_of": "2026-11-03T00:00:00+08:00",
   "rules": {
@@ -14,5 +15,11 @@
       "start": "2026-01-01T00:00:00+08:00",
       "end": "2027-01-01T00:00:00+08:00"
     }
+  },
+  "migration": {
+    "cutover_at": "2026-12-01T00:00:00+08:00",
+    "target_version": "2026.12.1-r1",
+    "validity_days": 45,
+    "description": "统一有效期：切换日起，留存积分按发放日加45天重定到期"
   }
 }

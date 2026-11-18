@@ -6,3 +6,19 @@ if(filePicker){
  document.querySelector('#import-csv').addEventListener('click',async event=>{event.target.disabled=true;try{const response=await fetch('/api/runs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({csv_text:editor.value})});const data=await response.json();if(!response.ok)throw Error(data.detail);location.href=location.pathname+'?run_id='+data.manifest.run_id;}catch(e){editor.setCustomValidity(e.message);editor.reportValidity();}finally{event.target.disabled=false;}});
  editor.addEventListener('input',()=>editor.setCustomValidity(''));
 }
+const publishBtn=document.querySelector('#publish-migration');
+if(publishBtn){
+ const tag=document.querySelector('.publish-tag');
+ publishBtn.addEventListener('click',async()=>{
+  if(publishBtn.disabled)return;
+  publishBtn.disabled=true;
+  try{
+   const response=await fetch('/api/runs/'+publishBtn.dataset.runId+'/migration/publish',{method:'POST'});
+   const data=await response.json();
+   if(!response.ok)throw Error(data.detail);
+   if(tag){tag.textContent=data.migration_status||data.migration.publish_status;tag.className='publish-tag publish-已发布';}
+   publishBtn.textContent='已发布';
+   output.textContent='迁移结果已发布：新版可用积分 '+data.migration.new_remaining+'，差异全部可追溯';
+  }catch(e){output.textContent='发布失败：'+e.message;publishBtn.disabled=false;}
+ });
+}

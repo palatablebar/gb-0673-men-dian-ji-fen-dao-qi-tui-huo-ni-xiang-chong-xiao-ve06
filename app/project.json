@@ -10,7 +10,8 @@
     "消费到期",
     "退货回拨",
     "余额对账",
-    "期末归档"
+    "期末归档",
+    "规则迁移"
   ],
   "rule": "消费先用最早到期批次；退款按原消费分配逆向恢复，已过期部分不得复活",
   "lane": "L5",
@@ -29,7 +30,8 @@
     "consumption",
     "refund",
     "reconcile",
-    "archive"
+    "archive",
+    "migration"
   ],
   "labels": {
     "id": "事件号",
@@ -58,6 +60,21 @@
     "refunded": "退款",
     "expired": "到期",
     "points_balanced": "积分守恒",
-    "allocations": "回拨批次"
+    "allocations": "回拨批次",
+    "source_lot": "原批次",
+    "source_event": "原发放事件",
+    "rule_version": "规则版本",
+    "old_expires": "旧到期 UTC",
+    "new_expires": "新到期 UTC",
+    "carried": "迁移金额",
+    "kept": "新版保留",
+    "dropped": "未保留差异",
+    "disposition": "差异去向",
+    "reason_code": "去向码",
+    "publish_status": "发布状态",
+    "old_remaining": "旧版可用",
+    "new_remaining": "新版可用",
+    "cutover_at": "切换时点 UTC",
+    "target_version": "目标版本"
   }
 }
